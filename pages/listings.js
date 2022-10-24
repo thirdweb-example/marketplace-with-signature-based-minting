@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  useMarketplace,
+  useContract,
   useActiveListings,
   useContractMetadata,
   ThirdwebNftMedia,
@@ -9,14 +9,12 @@ import { MARKETPLACE_ADDRESS } from "../const/contractAddresses";
 import styles from "../styles/Theme.module.css";
 
 export default function Listings() {
-  const marketplace = useMarketplace(MARKETPLACE_ADDRESS);
+  const { contract: marketplace } = useContract(MARKETPLACE_ADDRESS);
   const { data: listings, isLoading } = useActiveListings(marketplace);
-
-  console.log(listings);
 
   // Load contract metadata
   const { data: contractMetadata, isLoading: loadingMetadata } =
-    useContractMetadata(MARKETPLACE_ADDRESS);
+    useContractMetadata(marketplace);
 
   const [filter, setFilter] = useState(0); // 0 = direct, auction = 1
 

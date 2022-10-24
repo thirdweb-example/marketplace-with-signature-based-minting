@@ -1,12 +1,9 @@
 import {
   MediaRenderer,
-  useMarketplace,
+  useContract,
   useNetwork,
   useNetworkMismatch,
   useListing,
-  useAddress,
-  useMakeBid,
-  useBuyNow,
 } from "@thirdweb-dev/react";
 import { ChainId, ListingType, NATIVE_TOKENS } from "@thirdweb-dev/sdk";
 import { useRouter } from "next/router";
@@ -18,11 +15,13 @@ export default function ListingPage() {
   const router = useRouter();
   const { listingId } = router.query;
 
-  const address = useAddress();
   const networkMismatch = useNetworkMismatch();
   const [, switchNetwork] = useNetwork();
 
-  const marketplace = useMarketplace(MARKETPLACE_ADDRESS);
+  const { contract: marketplace } = useContract(
+    MARKETPLACE_ADDRESS,
+    "marketplace"
+  );
   const { data: listing, isLoading: loadingListing } = useListing(
     marketplace,
     listingId
@@ -54,7 +53,7 @@ export default function ListingPage() {
         await marketplace?.direct.makeOffer(
           listingId, // The listingId of the listing we want to make an offer for
           1, // Quantity = 1
-          NATIVE_TOKENS[ChainId.Rinkeby].wrapped.address, // Wrapped Ether address on Rinkeby
+          NATIVE_TOKENS[ChainId.Goerli].wrapped.address, // Wrapped Ether address on Goerli
           bidAmount // The offer amount the user entered
         );
       }

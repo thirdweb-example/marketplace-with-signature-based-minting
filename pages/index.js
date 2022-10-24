@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import {
-  useMarketplace,
+  useContract,
   useNetwork,
   useNetworkMismatch,
-  useNFTCollection,
   useAddress,
   useSDK,
   useCreateDirectListing,
@@ -15,19 +14,26 @@ import { useRef } from "react";
 import styles from "../styles/Theme.module.css";
 
 const Create = () => {
-  // React SDK hooks
   const address = useAddress();
   const networkMismatch = useNetworkMismatch();
   const [, switchNetwork] = useNetwork();
   const sdk = useSDK();
-  const nftCollection = useNFTCollection(
-    "0x5e0d08BF82f40b80DF1beb1874D04C1416BCc8B2"
+
+  const [creatingListing, setCreatingListing] = useState(false);
+
+  const { contract: nftCollection } = useContract(
+    "0x5e0d08BF82f40b80DF1beb1874D04C1416BCc8B2",
+    "nft-collection"
   );
-  const marketplace = useMarketplace(
-    "0x4719c1737a69b50Ed303E01f7725Cc8aEd855Be1"
+  const { contract: marketplace } = useContract(
+    "0x4719c1737a69b50Ed303E01f7725Cc8aEd855Be1",
+    "marketplace"
   );
-  const { mutate: makeDirectListing } = useCreateDirectListing(marketplace);
-  const { mutate: makeAuctionListing } = useCreateAuctionListing(marketplace);
+
+  const { mutateAsync: makeDirectListing } =
+    useCreateDirectListing(marketplace);
+  const { mutateAsync: makeAuctionListing } =
+    useCreateAuctionListing(marketplace);
 
   // Other hooks
   const router = useRouter();
@@ -36,6 +42,7 @@ const Create = () => {
 
   // This function gets called when the form is submitted.
   async function handleCreateListing(e) {
+    setCreatingListing(true);
     try {
       // Prevent page from refreshing
       e.preventDefault();
@@ -66,7 +73,7 @@ const Create = () => {
           address,
           name: e.target.elements.name.value,
           description: e.target.elements.description.value,
-          image: img.uris[0],
+          image: img,
         }),
       });
 
@@ -104,6 +111,9 @@ const Create = () => {
       }
     } catch (error) {
       console.error(error);
+      alert("Error creating listing. Check the console for more details");
+    } finally {
+      setCreatingListing(false);
     }
   }
 
@@ -113,7 +123,7 @@ const Create = () => {
         {
           assetContractAddress: contractAddress, // Contract Address of the NFT
           buyoutPricePerToken: price, // Maximum price, the auction will end immediately if a user pays this price.
-          currencyContractAddress: NATIVE_TOKEN_ADDRESS, // NATIVE_TOKEN_ADDRESS is the crpyto curency that is native to the network. i.e. Rinkeby ETH.
+          currencyContractAddress: NATIVE_TOKEN_ADDRESS, // NATIVE_TOKEN_ADDRESS is the crpyto curency that is native to the network. i.e. Goerli ETH.
           listingDurationInSeconds: 60 * 60 * 24 * 7, // When the auction will be closed and no longer accept bids (1 Week)
           quantity: 1, // How many of the NFTs are being listed (useful for ERC 1155 tokens)
           reservePricePerToken: 0, // Minimum price, users cannot bid below this amount
@@ -137,7 +147,7 @@ const Create = () => {
         {
           assetContractAddress: contractAddress, // Contract Address of the NFT
           buyoutPricePerToken: price, // Maximum price, the auction will end immediately if a user pays this price.
-          currencyContractAddress: NATIVE_TOKEN_ADDRESS, // NATIVE_TOKEN_ADDRESS is the crpyto curency that is native to the network. i.e. Rinkeby ETH.
+          currencyContractAddress: NATIVE_TOKEN_ADDRESS, // NATIVE_TOKEN_ADDRESS is the crpyto curency that is native to the network. i.e. Goerli ETH.
           listingDurationInSeconds: 60 * 60 * 24 * 7, // When the auction will be closed and no longer accept bids (1 Week)
           quantity: 1, // How many of the NFTs are being listed (useful for ERC 1155 tokens)
           startTimestamp: new Date(0), // When the listing will start
@@ -260,8 +270,9 @@ const Create = () => {
             type="submit"
             className={styles.mainButton}
             style={{ marginTop: 32, borderStyle: "none" }}
+            disabled={creatingListing}
           >
-            Mint + List NFT
+            {creatingListing ? "Loading..." : "Mint + List NFT"}
           </button>
         </div>
       </div>
