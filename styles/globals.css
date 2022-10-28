@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat");
 
 /* Change the values in here to match your branding */
 :root {
@@ -9,13 +9,13 @@
   --text-color: #fff;
 
   /* Main color of your brand */
-  --color-primary: #f213a4;
+  --color-primary: #041635;
 
   /* Secondary color of your brand */
-  --color-secondary: #418dff;
+  --color-secondary: #47abff;
 
   /* Which font you want to use */
-  --font: "Inter", sans-serif;
+  --font: "Montserrat", sans-serif;
 
   /* Color of the border around items */
   --border-color: rgba(255, 255, 255, 0.5);

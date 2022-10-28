@@ -13,8 +13,8 @@ export default function Header() {
       <div className={styles.left}>
         <Link href="/" passHref>
           <img
-            src={`/logo.png`}
-            alt="Thirdweb Logo"
+            src={`/mmlogonobg.svg`}
+            alt="Mintmatica Logo"
             className={styles.headerLogo}
           />
         </Link>
@@ -36,7 +36,7 @@ export default function Header() {
             <p>{address.slice(0, 6).concat("...").concat(address.slice(-4))}</p>
           </>
         ) : (
-          <ConnectWallet accentColor="#5204BF" colorMode="dark" />
+          <ConnectWallet accentColor="#041635" colorMode="dark" />
         )}
       </div>
     </div>

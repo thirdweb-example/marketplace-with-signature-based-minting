@@ -22,11 +22,11 @@ const Create = () => {
   const [creatingListing, setCreatingListing] = useState(false);
 
   const { contract: nftCollection } = useContract(
-    "0x5e0d08BF82f40b80DF1beb1874D04C1416BCc8B2",
+    "0xA46b048B089bb8ea1B5A371Be31dE934C288afb2",
     "nft-collection"
   );
   const { contract: marketplace } = useContract(
-    "0x4719c1737a69b50Ed303E01f7725Cc8aEd855Be1",
+    "0xceb60ecE0D2C9169e2Efd2ac38228F613aA4fFae",
     "marketplace"
   );
 
@@ -90,7 +90,7 @@ const Create = () => {
       // For Direct Listings:
       if (listingType.value === "directListing") {
         transactionResult = await createDirectListing(
-          "0x5e0d08BF82f40b80DF1beb1874D04C1416BCc8B2",
+          "0xA46b048B089bb8ea1B5A371Be31dE934C288afb2",
           mintedTokenId,
           price.value
         );
@@ -99,7 +99,7 @@ const Create = () => {
       // For Auction Listings:
       if (listingType.value === "auctionListing") {
         transactionResult = await createAuctionListing(
-          "0x5e0d08BF82f40b80DF1beb1874D04C1416BCc8B2",
+          "0xA46b048B089bb8ea1B5A371Be31dE934C288afb2",
           mintedTokenId,
           price.value
         );
