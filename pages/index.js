@@ -22,11 +22,11 @@ const Create = () => {
   const [creatingListing, setCreatingListing] = useState(false);
 
   const { contract: nftCollection } = useContract(
-    "0xA46b048B089bb8ea1B5A371Be31dE934C288afb2",
+    "0xA95835936A047c91F3A605ccfFDA50DEd2dD336c",
     "nft-collection"
   );
   const { contract: marketplace } = useContract(
-    "0xceb60ecE0D2C9169e2Efd2ac38228F613aA4fFae",
+    "0x21F3Bf150579cEa8c3183d005c2b7f6A1B1FD3A9",
     "marketplace"
   );
 
@@ -59,7 +59,7 @@ const Create = () => {
 
       // Ensure user is on the correct network
       if (networkMismatch) {
-        switchNetwork?.(ChainId.Goerli);
+        switchNetwork?.(ChainId.Polygon);
         return;
       }
 
@@ -90,7 +90,7 @@ const Create = () => {
       // For Direct Listings:
       if (listingType.value === "directListing") {
         transactionResult = await createDirectListing(
-          "0xA46b048B089bb8ea1B5A371Be31dE934C288afb2",
+          "0xA95835936A047c91F3A605ccfFDA50DEd2dD336c",
           mintedTokenId,
           price.value
         );
@@ -99,7 +99,7 @@ const Create = () => {
       // For Auction Listings:
       if (listingType.value === "auctionListing") {
         transactionResult = await createAuctionListing(
-          "0xA46b048B089bb8ea1B5A371Be31dE934C288afb2",
+          "0xA95835936A047c91F3A605ccfFDA50DEd2dD336c",
           mintedTokenId,
           price.value
         );
