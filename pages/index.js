@@ -63,8 +63,12 @@ const Create = () => {
         return;
       }
 
+    
+
       // Upload image using storage SDK
       const img = await sdk.storage.upload(file);
+
+     
 
       // Signature Mint NFT, get info (fetch generate mint signature)
       const req = await fetch("/api/generate-mint-signature", {
@@ -79,7 +83,11 @@ const Create = () => {
 
       const signedPayload = (await req.json()).signedPayload;
 
+      console.log(signedPayload);
+
       const nft = await nftCollection?.signature.mint(signedPayload);
+
+      console.log(nft);
 
       const mintedTokenId = nft.id.toNumber();
       console.log(mintedTokenId);
