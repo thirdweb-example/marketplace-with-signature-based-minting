@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import "../styles/globals.css";
 
 // This is the chainId your dApp will work on.
-const activeChainId = ChainId.Polygon;
+const activeChainId = ChainId.Mainnet;
 
 function MyApp({ Component, pageProps }) {
   return (

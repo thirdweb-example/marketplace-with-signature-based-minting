@@ -3,10 +3,10 @@ import { ThirdwebSDK } from "@thirdweb-dev/sdk";
 export default async function generateMintSignature(req, res) {
   // De-construct body from request
   let { address, name, description, image } = JSON.parse(req.body);
-  const sdk = ThirdwebSDK.fromPrivateKey(process.env.PRIVATE_KEY, "polygon");
+  const sdk = ThirdwebSDK.fromPrivateKey(process.env.PRIVATE_KEY, "mainnet");
 
   const nftContract = await sdk.getContract(
-    "0x5D5C595A744b4185a993d860c3152Af9f8fe2e82",
+    "0xA46b048B089bb8ea1B5A371Be31dE934C288afb2",
     "nft-collection"
   );
 

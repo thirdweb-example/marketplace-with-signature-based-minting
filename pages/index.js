@@ -22,11 +22,11 @@ const Create = () => {
   const [creatingListing, setCreatingListing] = useState(false);
 
   const { contract: nftCollection } = useContract(
-    "0x5D5C595A744b4185a993d860c3152Af9f8fe2e82",
+    "0xA46b048B089bb8ea1B5A371Be31dE934C288afb2",
     "nft-collection"
   );
   const { contract: marketplace } = useContract(
-    "0x8F53E1e39f6128FA5369564f3A1d7bD060ea4897",
+    "0xBC1221FbF0BCb88E59bD48f2066aCa7731068509",
     "marketplace"
   );
 
@@ -59,7 +59,7 @@ const Create = () => {
 
       // Ensure user is on the correct network
       if (networkMismatch) {
-        switchNetwork?.(ChainId.Polygon);
+        switchNetwork?.(ChainId.Mainnet);
         return;
       }
 
@@ -92,6 +92,7 @@ const Create = () => {
       const mintedTokenId = nft.id.toNumber();
       console.log(mintedTokenId);
 
+
       // Store the result of either the direct listing creation or the auction listing creation
       let transactionResult = undefined;
 
@@ -99,7 +100,7 @@ const Create = () => {
       // For Direct Listings:
       if (listingType.value === "directListing") {
         transactionResult = await createDirectListing(
-          "0x5D5C595A744b4185a993d860c3152Af9f8fe2e82",
+          "0xA46b048B089bb8ea1B5A371Be31dE934C288afb2",
           mintedTokenId,
           price.value
         );
@@ -108,7 +109,7 @@ const Create = () => {
       // For Auction Listings:
       if (listingType.value === "auctionListing") {
         transactionResult = await createAuctionListing(
-          "0x5D5C595A744b4185a993d860c3152Af9f8fe2e82",
+          "0xA46b048B089bb8ea1B5A371Be31dE934C288afb2",
           mintedTokenId,
           price.value
         );
