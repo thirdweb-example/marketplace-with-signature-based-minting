@@ -6,7 +6,7 @@ export default async function generateMintSignature(req, res) {
   const sdk = ThirdwebSDK.fromPrivateKey(process.env.PRIVATE_KEY, "polygon");
 
   const nftContract = await sdk.getContract(
-    "0xA95835936A047c91F3A605ccfFDA50DEd2dD336c",
+    "0x5D5C595A744b4185a993d860c3152Af9f8fe2e82",
     "nft-collection"
   );
 

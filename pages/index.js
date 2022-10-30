@@ -22,11 +22,11 @@ const Create = () => {
   const [creatingListing, setCreatingListing] = useState(false);
 
   const { contract: nftCollection } = useContract(
-    "0xA95835936A047c91F3A605ccfFDA50DEd2dD336c",
+    "0x5D5C595A744b4185a993d860c3152Af9f8fe2e82",
     "nft-collection"
   );
   const { contract: marketplace } = useContract(
-    "0x21F3Bf150579cEa8c3183d005c2b7f6A1B1FD3A9",
+    "0x8F53E1e39f6128FA5369564f3A1d7bD060ea4897",
     "marketplace"
   );
 
@@ -82,6 +82,7 @@ const Create = () => {
       const nft = await nftCollection?.signature.mint(signedPayload);
 
       const mintedTokenId = nft.id.toNumber();
+      console.log(mintedTokenId);
 
       // Store the result of either the direct listing creation or the auction listing creation
       let transactionResult = undefined;
@@ -90,7 +91,7 @@ const Create = () => {
       // For Direct Listings:
       if (listingType.value === "directListing") {
         transactionResult = await createDirectListing(
-          "0xA95835936A047c91F3A605ccfFDA50DEd2dD336c",
+          "0x5D5C595A744b4185a993d860c3152Af9f8fe2e82",
           mintedTokenId,
           price.value
         );
@@ -99,7 +100,7 @@ const Create = () => {
       // For Auction Listings:
       if (listingType.value === "auctionListing") {
         transactionResult = await createAuctionListing(
-          "0xA95835936A047c91F3A605ccfFDA50DEd2dD336c",
+          "0x5D5C595A744b4185a993d860c3152Af9f8fe2e82",
           mintedTokenId,
           price.value
         );
@@ -143,7 +144,7 @@ const Create = () => {
 
   async function createDirectListing(contractAddress, tokenId, price) {
     try {
-      makeDirectListing(
+     makeDirectListing(
         {
           assetContractAddress: contractAddress, // Contract Address of the NFT
           buyoutPricePerToken: price, // Maximum price, the auction will end immediately if a user pays this price.

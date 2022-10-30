@@ -18,7 +18,7 @@ export default function Header() {
             className={styles.headerLogo}
           />
         </Link>
-        <Link href="/listings">
+        <Link legacyBehavior href="/listings">
           <a className={styles.headerItem}>Listings</a>
         </Link>
       </div>
