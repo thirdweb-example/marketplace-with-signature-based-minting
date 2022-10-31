@@ -24,20 +24,9 @@ export default function Header() {
       </div>
 
       <div className={styles.right}>
-        {address ? (
-          <>
-            <a
-              className={styles.secondaryButton}
-              onClick={() => disconnectWallet()}
-            >
-              Disconnect
-            </a>
-            <p className={styles.verticalSpacer}>|</p>
-            <p>{address.slice(0, 6).concat("...").concat(address.slice(-4))}</p>
-          </>
-        ) : (
+
           <ConnectWallet accentColor="#041635" colorMode="dark" />
-        )}
+        
       </div>
     </div>
   );
