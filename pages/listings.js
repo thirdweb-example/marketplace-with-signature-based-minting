@@ -24,40 +24,11 @@ export default function Listings() {
         <div className={styles.detailPageContainer}>
           {!loadingMetadata ? (
             <>
-              <h1>{contractMetadata?.name}</h1>
-              <p>{contractMetadata?.description}</p>
+              <h2>Mintmatica Marketplace Listings</h2>
             </>
           ) : (
             <p>Loading...</p>
           )}
-          <hr className={`${styles.smallDivider} ${styles.detailPageHr}`} />
-        </div>
-
-        {/* Toggle between direct listing and auction listing */}
-        <div className={styles.listingTypeContainer}>
-          <input
-            type="radio"
-            name="listingType"
-            id="directListing"
-            value="directListing"
-            defaultChecked
-            className={styles.listingType}
-            onClick={() => setFilter(0)}
-          />
-          <label htmlFor="directListing" className={styles.listingTypeLabel}>
-            Direct Listing
-          </label>
-          <input
-            type="radio"
-            name="listingType"
-            id="auctionListing"
-            value="auctionListing"
-            className={styles.listingType}
-            onClick={() => setFilter(1)}
-          />
-          <label htmlFor="auctionListing" className={styles.listingTypeLabel}>
-            Auction Listing
-          </label>
         </div>
 
         {!isLoading ? (
