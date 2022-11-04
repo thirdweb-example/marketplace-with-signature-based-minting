@@ -95,6 +95,7 @@ export default function ListingPage() {
     <div className={styles.container}>
       <div className={styles.listingContainer}>
         <div className={styles.leftListing}>
+        <h1>{listing.asset.name}</h1>
           <MediaRenderer
             src={listing.asset.image}
             className={styles.mainNftImage}
@@ -102,9 +103,9 @@ export default function ListingPage() {
         </div>
 
         <div className={styles.rightListing}>
-          <h1>{listing.asset.name}</h1>
+
           <p>
-            Owned by <b>{listing.sellerAddress?.slice(0, 6)}</b>
+            Owned by <b>{listing.sellerAddress?.slice(0, 8)}</b>
           </p>
 
           <h2>

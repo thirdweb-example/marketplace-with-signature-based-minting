@@ -24,7 +24,7 @@ export default function Header() {
       </div>
 
       <div className={styles.right}>
-
+          
           <ConnectWallet accentColor="#041635" colorMode="dark" />
         
       </div>

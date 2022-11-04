@@ -12,8 +12,15 @@ import { ChainId, NATIVE_TOKEN_ADDRESS } from "@thirdweb-dev/sdk";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 import styles from "../styles/Theme.module.css";
+import { NextSeo } from 'next-seo';
 
 const Create = () => {
+    <NextSeo
+      title="Simple Usage Example"
+      description="A short description goes here."
+    />
+
+
   const address = useAddress();
   const networkMismatch = useNetworkMismatch();
   const [, switchNetwork] = useNetwork();
