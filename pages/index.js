@@ -194,33 +194,9 @@ const Create = () => {
         {/* Form Section */}
         <div className={styles.collectionContainer}>
           <h1 className={styles.ourCollection}>
-            Upload your NFT to the marketplace:
+            Mint an NFT and add it to the marketplace:
           </h1>
-
-          {/* Toggle between direct listing and auction listing */}
-          <div className={styles.listingTypeContainer}>
-            <input
-              type="radio"
-              name="listingType"
-              id="directListing"
-              value="directListing"
-              defaultChecked
-              className={styles.listingType}
-            />
-            <label htmlFor="directListing" className={styles.listingTypeLabel}>
-              Direct Listing
-            </label>
-            <input
-              type="radio"
-              name="listingType"
-              id="auctionListing"
-              value="auctionListing"
-              className={styles.listingType}
-            />
-            <label htmlFor="auctionListing" className={styles.listingTypeLabel}>
-              Auction Listing
-            </label>
-          </div>
+          <br></br>
 
           {file ? (
             <img

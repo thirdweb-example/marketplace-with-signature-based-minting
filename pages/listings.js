@@ -41,11 +41,12 @@ export default function Listings() {
                   key={listing.id.toString()}
                   href={`/listing/${listing.id}`}
                 >
+                 <h3>{listing.asset.name}</h3>
                   <ThirdwebNftMedia
                     metadata={{ ...listing.asset }}
                     className={styles.nftMedia}
                   />
-                  <h4>{listing.asset.name}</h4>
+                  <h4>{listing.asset.description}</h4>
                   <p>
                     {listing.buyoutCurrencyValuePerToken.displayValue}{" "}
                     {listing.buyoutCurrencyValuePerToken.symbol}
