@@ -1,5 +1,4 @@
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
-import Footer from "../components/footer";
 import Header from "../components/Header";
 import "../styles/globals.css";
 
