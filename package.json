@@ -9,14 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.12",
+    "@mui/styled-engine-sc": "^5.10.6",
     "@thirdweb-dev/react": "^3.4.4",
     "@thirdweb-dev/sdk": "^3.4.4",
     "@thirdweb-dev/storage": "^1.0.6",
     "ethers": "^5.6.8",
     "next": "^12.1.6",
-    "next-seo": "^5.13.0",
+    "next-seo": "^5.14.0",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "eslint": "8.26.0",

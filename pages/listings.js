@@ -46,11 +46,13 @@ export default function Listings() {
                     metadata={{ ...listing.asset }}
                     className={styles.nftMedia}
                   />
+                  <div className={styles.nftBoxDescription}>
                   <h4>{listing.asset.description}</h4>
                   <p>
                     {listing.buyoutCurrencyValuePerToken.displayValue}{" "}
                     {listing.buyoutCurrencyValuePerToken.symbol}
                   </p>
+                  </div>
                 </a>
               ))}
           </div>

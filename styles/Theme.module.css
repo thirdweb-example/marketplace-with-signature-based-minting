@@ -259,22 +259,30 @@
 }
 
 .nftBoxGrid {
-  width: 1200px;
-  max-width: 95vw;
+  width: 100%;
+  max-width: 1200px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: top;
   justify-content: center;
-  gap: 3%;
-  margin-top: 24px;
+  gap: 14%;
+  margin-top: 18px;
   flex-wrap: wrap;
 }
 
 .nftBox {
-  width: 75%;
+  width: 40%;
   min-height: 200px;
   padding: 4px;
   margin-bottom: 6px;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  position:inherit;
+}
+
+.nftBoxDescription {
+  align-items: bottom;
   height: 100%;
   color: inherit;
   text-decoration: none;
@@ -282,8 +290,9 @@
 
 .nftMedia {
   width: 100%;
+  align-items: top;
   max-height: 300px;
-  border-radius: 15px;
+  border-radius: 20px;
 }
 
 /* On mobile, make the .mintInfoContainer stack vertically */

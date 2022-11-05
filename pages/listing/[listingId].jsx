@@ -11,6 +11,7 @@ import { useState } from "react";
 import { MARKETPLACE_ADDRESS } from "../../const/contractAddresses";
 import styles from "../../styles/Theme.module.css";
 
+
 export default function ListingPage() {
   const router = useRouter();
   const { listingId } = router.query;
