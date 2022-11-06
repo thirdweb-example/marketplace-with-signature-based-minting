@@ -11,6 +11,7 @@ import {
 import { ChainId, NATIVE_TOKEN_ADDRESS } from "@thirdweb-dev/sdk";
 import { useRouter } from "next/router";
 import { useRef } from "react";
+import Button from '@mui/material/Button';
 import styles from "../styles/Theme.module.css";
 
 const Create = () => {
@@ -196,7 +197,31 @@ const Create = () => {
           <h1 className={styles.ourCollection}>
             Mint an NFT and add it to the marketplace:
           </h1>
-          <br></br>
+
+          {/* Toggle between direct listing and auction listing */}
+          <div className={styles.listingTypeContainer}>
+            <input
+              type="radio"
+              name="listingType"
+              id="directListing"
+              value="directListing"
+              defaultChecked
+              className={styles.listingType}
+            />
+            <label htmlFor="directListing" className={styles.listingTypeLabel}>
+              Direct Listing
+            </label>
+            <input
+              type="radio"
+              name="listingType"
+              id="auctionListing"
+              value="auctionListing"
+              className={styles.listingType}
+            />
+            <label htmlFor="auctionListing" className={styles.listingTypeLabel}>
+              Auction Listing
+            </label>
+          </div>
 
           {file ? (
             <img
@@ -252,14 +277,16 @@ const Create = () => {
             style={{ minWidth: "320px" }}
           />
 
-          <button
+          <Button
+            variant="contained"
             type="submit"
+            size="large"
             className={styles.mainButton}
-            style={{ marginTop: 32, borderStyle: "none" }}
+            style={{ marginTop: 32, }}
             disabled={creatingListing}
           >
             {creatingListing ? "Loading..." : "Mint + List NFT"}
-          </button>
+          </Button>
         </div>
       </div>
     </form>

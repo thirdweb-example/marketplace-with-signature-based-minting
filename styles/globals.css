@@ -33,6 +33,11 @@ body {
   display: flex;
   margin: 0;
   text-align: center;
+  
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 /* Box sizing rules */

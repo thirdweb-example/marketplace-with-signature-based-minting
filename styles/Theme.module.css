@@ -101,31 +101,34 @@
   justify-content: center;
   white-space: nowrap;
   vertical-align: middle;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
+  outline: 1px solid #041635;
+  text-decoration: underline;
+  outline-offset: 1px;
   line-height: 1;
   font-weight: 600;
   transition-property: background-color, border-color, color, fill, stroke,
     opacity, box-shadow, transform;
   transition-duration: 200ms;
-  height: 2.5rem;
+  height: 3rem;
   min-width: 2rem;
-  font-size: .8rem;
-  background: #e5e5ea;
+  font-size: 1.1rem;
+  background: #c6c6ec;
   background-image: linear-gradient(
     to left,
-    var(--color-primary) 0%,
+    var(--color-primary) 15%,
     var(--color-secondary) 101.52%
   );
   color: #fff;
-  width: 120px;
+  width: 14\20px;
   text-align: center;
-  border-radius: 9999px;
+  border-radius: 9px;
   border-style: none;
 }
 
 .mainButton:hover {
   opacity: 0.8;
+  outline: 0px;
+
 }
 
 .mintCompletionArea {
