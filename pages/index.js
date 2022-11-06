@@ -116,9 +116,9 @@ const Create = () => {
         );
       }
 
-      // If the transaction succeeds, take the user back to the homepage to view their listing!
+      // If the transaction succeeds, take the user back to the homepage to view their listing!  MP Updated 11/6 with /listing/${listing.id}
       if (transactionResult) {
-        router.push(`/`);
+        router.push(`/listing/${listing.id}`);
       }
     } catch (error) {
       console.error(error);
