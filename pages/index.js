@@ -14,9 +14,6 @@ import { useRef } from "react";
 import styles from "../styles/Theme.module.css";
 
 const Create = () => {
-
-
-
   const address = useAddress();
   const networkMismatch = useNetworkMismatch();
   const [, switchNetwork] = useNetwork();
