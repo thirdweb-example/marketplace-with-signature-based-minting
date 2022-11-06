@@ -105,7 +105,7 @@
   text-decoration: underline;
   outline-offset: 1px;
   line-height: 1;
-  font-weight: 600;
+  font-weight: 500;
   transition-property: background-color, border-color, color, fill, stroke,
     opacity, box-shadow, transform;
   transition-duration: 200ms;
@@ -145,7 +145,7 @@
   left: 0;
   width: 100vw;
   height: 72px;
-  margin-bottom: 96px;
+  margin-bottom: 46px;
   display: flex;
   flex-direction: row;
   align-items: center;

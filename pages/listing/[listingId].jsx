@@ -8,6 +8,7 @@ import {
 import { ChainId, ListingType, NATIVE_TOKENS } from "@thirdweb-dev/sdk";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Link from "next/link";
 import { MARKETPLACE_ADDRESS } from "../../const/contractAddresses";
 import styles from "../../styles/Theme.module.css";
 
@@ -97,22 +98,25 @@ export default function ListingPage() {
       <div className={styles.listingContainer}>
         <div className={styles.leftListing}>
         <h1>{listing.asset.name}</h1>
+        <a href={`${listing.asset.image}`} target="_blank" rel="noreferrer">
           <MediaRenderer
             src={listing.asset.image}
             className={styles.mainNftImage}
           />
+          </a>
         </div>
 
         <div className={styles.rightListing}>
 
-          <p>
-            Owned by <b>{listing.sellerAddress?.slice(0, 8)}</b>
-          </p>
+
 
           <h2>
             <b>{listing.buyoutCurrencyValuePerToken.displayValue}</b>{" "}
             {listing.buyoutCurrencyValuePerToken.symbol}
           </h2>
+          <p>
+            Owned by <b><a href={`https://etherscan.io/address/${listing.sellerAddress}`} target="_blank" rel="noreferrer"> {listing.sellerAddress?.slice(0, 8)}</a></b>
+          </p>
 
           <div
             style={{
@@ -123,11 +127,10 @@ export default function ListingPage() {
             }}
           >
             <button
-              style={{ borderStyle: "none" }}
               className={styles.mainButton}
               onClick={buyNft}
             >
-              Buy
+              Buy NFT
             </button>
             <p style={{ color: "grey" }}>|</p>
             <div
@@ -143,13 +146,14 @@ export default function ListingPage() {
                 name="bidAmount"
                 className={styles.textInput}
                 onChange={(e) => setBidAmount(e.target.value)}
-                placeholder="Amount"
+                placeholder={listing.buyoutCurrencyValuePerToken.displayValue}
                 style={{ marginTop: 0, marginLeft: 0, width: 128 }}
               />
               <button
                 className={styles.mainButton}
                 onClick={createBidOrOffer}
                 style={{
+                  outline: "none",
                   borderStyle: "none",
                   background: "transparent",
                   width: "fit-content",

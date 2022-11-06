@@ -40,6 +40,10 @@ a:hover {
   text-decoration: none;
 }
 
+a:visited {
+  color: var(--text-color);
+}
+
 /* Box sizing rules */
 *,
 *::before,
