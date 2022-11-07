@@ -1,5 +1,6 @@
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
-import Header from "../components/Header";
+//import Header from "../components/Header";
+import DrawerAppBar from "../components/DrawerAppBar";
 import "../styles/globals.css";
 import { NextSeo } from "next-seo";
 
@@ -9,7 +10,7 @@ const activeChainId = ChainId.Mainnet;
 function MyApp({ Component, pageProps }) {
   return (
     <ThirdwebProvider desiredChainId={activeChainId}>
-      <Header />
+      <DrawerAppBar />
    <>
        <NextSeo
         title="Mintmatica - Mint and Sell an NFT in Seconds"
