@@ -1,5 +1,5 @@
 .container {
-  margin-top: 96px;
+  margin-top: 20px;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
@@ -126,7 +126,12 @@
 }
 
 .mainButton:hover {
-  opacity: 0.8;
+  opacity: .85;
+  outline: 0px;
+}
+
+.Button:hover {
+  opacity: 1;
   outline: 0px;
 
 }
@@ -139,6 +144,20 @@
 }
 
 .header {
+  background-color: #041635;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 72px;
+  margin-bottom: 46px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.MuiToolbar-root {
   background-color: #041635;
   position: fixed;
   top: 0;
@@ -175,20 +194,22 @@
 }
 
 .headerItem {
-  font-size: .7rem;
+  font-size: .8rem;
   color: inherit;
   font-weight: bold;
-  margin-left: 16px;
+  margin-left: 1.3rem;
+  margin-right: 2rem;
 }
 
 .right {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: right;
   font-size: small;
-  flex-direction: row;
-  margin-right: 3%;
+  flex-direction: column;
+  margin-right: 1%;
+  background-color: #041635;
 }
 
 .mintAreaLeft {
