@@ -28,12 +28,12 @@ function DrawerAppBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'}}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', padding: '3'}}>
 <Link href="/" passHref>
           <img
             src={`/mmlogonobg.svg`}
             alt="Mintmatica Logo"
-            width={144}
+            width={120}
           />
         </Link>
       <Divider /><br></br>
@@ -41,7 +41,7 @@ function DrawerAppBar(props) {
           Listings
         </Link>
         <Divider /><br></br>
-        <ConnectWallet accentColor="#041635" colorMode="dark"/>
+        <ConnectWallet accentColor="#041635" colorMode="dark" width="90"/>
     </Box>
   );
 
@@ -49,14 +49,14 @@ function DrawerAppBar(props) {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <AppBar component="nav" sx={{ backgroundColor: '#041635'}}>
-        <Toolbar variant="regular" disableGutters={false} className={Header} sx={{height: 72, width: 100}}>
+      <AppBar component="nav" sx={{ backgroundColor: '#041635'}} >
+        <Toolbar variant="dense" disableGutters={false} className={styles.toolbarstyle} sx={{height: 72, width: 99}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { sm: 'none' }, padding:'0px', margin:'3px' }}
           >
             <MenuIcon />
           </IconButton>
@@ -64,7 +64,7 @@ function DrawerAppBar(props) {
           <img
             src={`/mmlogonobg.svg`}
             alt="Mintmatica Logo"
-            width={144}
+            width={120}
           />
         </Link>
           <Box >
@@ -72,9 +72,9 @@ function DrawerAppBar(props) {
           Listings
         </Link>
         </Box>
-          
-        <ConnectWallet accentColor="#041635" colorMode="dark" className={styles.headerItem.right}/>
-       
+        <Box className={styles.right}>
+          <ConnectWallet accentColor="#041635" colorMode="dark"/>
+        </Box>
         </Toolbar>
 
       </AppBar>

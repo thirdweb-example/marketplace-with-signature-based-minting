@@ -183,7 +183,8 @@
 }
 
 .headerLogo {
-  width: 144px;
+  width: 120px;
+  justify-content: left;
   cursor: pointer;
 }
 
@@ -197,18 +198,23 @@
   font-size: .8rem;
   color: inherit;
   font-weight: bold;
-  margin-left: 1.3rem;
-  margin-right: 2rem;
+  margin-left: .6rem;
+  margin-right: .6rem;
+}
+
+.toolbarstyle	 {
+  padding: 0px;
+  margin: 0px;
+  align-items: center;
 }
 
 .right {
-  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: right;
-  font-size: small;
+  justify-content: left;
+  font-size: .8rem;
   flex-direction: column;
-  margin-right: 1%;
+  padding-right: 1%;
   background-color: #041635;
 }
 
