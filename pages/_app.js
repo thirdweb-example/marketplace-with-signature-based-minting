@@ -1,6 +1,6 @@
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 //import Header from "../components/Header";
-import DrawerAppBar from "../components/DrawerAppBar";
+import ResponsiveAppBar from "../components/ResponsiveAppBar";
 import "../styles/globals.css";
 import { NextSeo } from "next-seo";
 
@@ -10,7 +10,7 @@ const activeChainId = ChainId.Mainnet;
 function MyApp({ Component, pageProps }) {
   return (
     <ThirdwebProvider desiredChainId={activeChainId}>
-      <DrawerAppBar />
+      <ResponsiveAppBar />
    <>
        <NextSeo
         title="Mintmatica - Mint and Sell an NFT in Seconds"
@@ -24,9 +24,9 @@ function MyApp({ Component, pageProps }) {
           description: "Mint and instantly sell an NFT on the Ethereum blockchain with Mintmatica. Your collectible, your price all made possible with web3 tech",
           images: [
             {
-              url: "/mmlogo.svg",
-              width: 800,
-              height: 200,
+              url: "../public/mm-screen-logo.png",
+              width: 1037,
+              height: 202,
               alt: "Mintmatica - Mint and Sell an NFT in Seconds",
             },
           ],

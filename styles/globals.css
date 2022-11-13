@@ -40,6 +40,24 @@ a:hover {
   text-decoration: none;
 }
 
+a:active {
+  text-decoration: underline;
+}
+
+#menu-appbar a {
+  text-decoration: underline;
+  font-family: var(--font);
+  font-weight: 600;
+  color: #041635;
+}
+
+#menu-appbar a:hover {
+  text-decoration: none;
+  font-family: var(--font);
+  font-weight: 600;
+  color: #041635;
+}
+
 a:visited {
   color: var(--text-color);
 }
