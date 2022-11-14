@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
-export default function Footer() {
+function Footer() {
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -32,3 +32,4 @@ function Copyright() {
       </Box>
       {/* End footer */}
 }
+export default Footer;

@@ -82,18 +82,6 @@ function ResponsiveAppBar() {
               </Link>
               </MenuItem>
 
-              <MenuItem>
-              <Link href="#" passHref>
-                 Collections
-              </Link>
-              </MenuItem>
-
-              <MenuItem>
-              <Link href="#" passHref>
-                 About
-              </Link>
-              </MenuItem>
-              
               <Box sx={{ flexGrow: 0 }}>
 
                 <ConnectWallet accentColor="#041635" colorMode="dark" maxWidth="80" />
@@ -116,18 +104,6 @@ function ResponsiveAppBar() {
               <MenuItem>
               <Link href="/listings" passHref>
                  Listings
-              </Link>
-              </MenuItem>
-
-              <MenuItem>
-              <Link href="#" passHref>
-                 Collections
-              </Link>
-              </MenuItem>
-
-              <MenuItem>
-              <Link href="#" passHref>
-                 About
               </Link>
               </MenuItem>
               
