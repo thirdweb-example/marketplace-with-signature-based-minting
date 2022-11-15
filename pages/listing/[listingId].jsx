@@ -98,12 +98,10 @@ export default function ListingPage() {
       <div className={styles.listingContainer}>
         <div className={styles.leftListing}>
         <h1>{listing.asset.name}</h1>
-        <a href={`${listing.asset.image}`} target="_blank" rel="noreferrer">
           <MediaRenderer
             src={listing.asset.image}
             className={styles.mainNftImage}
           />
-          </a>
         </div>
 
         <div className={styles.rightListing}>
@@ -115,7 +113,7 @@ export default function ListingPage() {
             {listing.buyoutCurrencyValuePerToken.symbol}
           </h2>
           <p>
-            Owned by <b><a href={`https://etherscan.io/address/${listing.sellerAddress}`} target="_blank" rel="noreferrer"> {listing.sellerAddress?.slice(0, 8)}</a></b>
+            Owned by <b>{listing.sellerAddress?.slice(0, 8)}</b>
           </p>
 
           <div

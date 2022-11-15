@@ -51,6 +51,7 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
+            <p>
             <Link href="/" passHref>
           <img
             src={`/mmlogonobg.svg`}
@@ -58,6 +59,7 @@ function ResponsiveAppBar() {
             width={122}
           />
         </Link>
+        </p>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -73,7 +75,7 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' }, color:'#041635',
+                display: { xs: 'block', md: 'none' }, color:'#041635', alignContent:'center', verticalAlign:'center',
               }}
             >
               <MenuItem>
@@ -82,17 +84,15 @@ function ResponsiveAppBar() {
               </Link>
               </MenuItem>
 
-              <Box sx={{ flexGrow: 0 }}>
-
-                <ConnectWallet accentColor="#041635" colorMode="dark" maxWidth="80" />
-
-              </Box>
+            <Box sx={{ flexGrow: 0, fontSize: '.7rem', letterSpacing: 'normal', width: '90%'}}>
+            <ConnectWallet colorMode="light" />
+            </Box>
 
             </Menu>
           </Box>
           
           <Box sx={{ flexGrow: 1, verticalAlign:'center', margin:'2px', padding:'2px', alignContent:'center', display: { xs: 'none', md: 'flex' } }}>
-        <p>
+
           <Link href="/" passHref>
           <img
             src={`/mmlogonobg.svg`}
@@ -100,7 +100,8 @@ function ResponsiveAppBar() {
             width={122}
           />
         </Link>
-        </p>
+
+       
               <MenuItem>
               <Link href="/listings" passHref>
                  Listings
@@ -108,12 +109,11 @@ function ResponsiveAppBar() {
               </MenuItem>
               
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-
+          
+          <Box sx={{ flexGrow: 0, fontSize: '.7rem', letterSpacing: 'normal', }}>
             <ConnectWallet accentColor="#041635" colorMode="dark" />
-
-          </Box>
+            </Box>
+          
         </Toolbar>
       </Container>
     </AppBar>
