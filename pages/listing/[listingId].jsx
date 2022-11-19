@@ -106,12 +106,12 @@ export default function ListingPage() {
 
         <div className={styles.rightListing}>
 
+        <h3>{listing.asset.description}</h3>
 
-
-          <h2>
+          <h3>
             <b>{listing.buyoutCurrencyValuePerToken.displayValue}</b>{" "}
             {listing.buyoutCurrencyValuePerToken.symbol}
-          </h2>
+          </h3>
           <p>
             Owned by <b>{listing.sellerAddress?.slice(0, 8)}</b>
           </p>

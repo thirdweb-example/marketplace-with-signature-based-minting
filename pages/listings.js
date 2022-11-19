@@ -47,7 +47,7 @@ export default function Listings() {
                     className={styles.nftMedia}
                   />
                   <div className={styles.nftBoxDescription}>
-                  <h5>{listing.asset.description}</h5>
+
                   <p>
                     {listing.buyoutCurrencyValuePerToken.displayValue}{" "}
                     {listing.buyoutCurrencyValuePerToken.symbol}

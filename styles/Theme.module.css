@@ -304,7 +304,7 @@
   flex-direction: row;
   align-items: top;
   justify-content: center;
-  gap: 14%;
+  gap: 10%;
   margin-top: 18px;
   flex-wrap: wrap;
 }
@@ -314,7 +314,6 @@
   min-height: 200px;
   padding: 4px;
   margin-bottom: 8px;
-  height: 100%;
   color: inherit;
   text-decoration: none;
   position:inherit;
@@ -323,10 +322,14 @@
 
 .nftBoxDescription {
   align-items: bottom;
+  display: block;
+  vertical-align: baseline;
   height: 100%;
   color: inherit;
   text-decoration: none;
 }
+
+
 
 .nftMedia {
   width: 100%;

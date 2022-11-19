@@ -84,6 +84,12 @@ function ResponsiveAppBar() {
               </Link>
               </MenuItem>
 
+              <MenuItem>
+              <Link href="/collections" passHref>
+                 Collections
+              </Link>
+              </MenuItem>
+
             <Box sx={{ flexGrow: 0, fontSize: '.7rem', letterSpacing: 'normal', width: '90%'}}>
             <ConnectWallet colorMode="light" />
             </Box>
@@ -105,6 +111,12 @@ function ResponsiveAppBar() {
               <MenuItem>
               <Link href="/listings" passHref>
                  Listings
+              </Link>
+              </MenuItem>
+
+              <MenuItem>
+              <Link href="/collections" passHref>
+                 Collections
               </Link>
               </MenuItem>
               
