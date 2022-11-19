@@ -8,8 +8,10 @@ import {
 import { ChainId, ListingType, NATIVE_TOKENS } from "@thirdweb-dev/sdk";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Link from "next/link";
 import { MARKETPLACE_ADDRESS } from "../../const/contractAddresses";
 import styles from "../../styles/Theme.module.css";
+
 
 export default function ListingPage() {
   const router = useRouter();
@@ -44,7 +46,7 @@ export default function ListingPage() {
     try {
       // Ensure user is on the correct network
       if (networkMismatch) {
-        switchNetwork && switchNetwork(ChainId.Mumbai);
+        switchNetwork && switchNetwork(ChainId.Mainnet);
         return;
       }
 
@@ -53,7 +55,7 @@ export default function ListingPage() {
         await marketplace?.direct.makeOffer(
           listingId, // The listingId of the listing we want to make an offer for
           1, // Quantity = 1
-          NATIVE_TOKENS[ChainId.Goerli].wrapped.address, // Wrapped Ether address on Goerli
+          NATIVE_TOKENS[ChainId.Mainnet].wrapped.address, // Wrapped Ether address on Goerli
           bidAmount // The offer amount the user entered
         );
       }
@@ -78,7 +80,7 @@ export default function ListingPage() {
     try {
       // Ensure user is on the correct network
       if (networkMismatch) {
-        switchNetwork && switchNetwork(ChainId.Mumbai);
+        switchNetwork && switchNetwork(ChainId.Mainnet);
         return;
       }
 
@@ -95,6 +97,7 @@ export default function ListingPage() {
     <div className={styles.container}>
       <div className={styles.listingContainer}>
         <div className={styles.leftListing}>
+        <h1>{listing.asset.name}</h1>
           <MediaRenderer
             src={listing.asset.image}
             className={styles.mainNftImage}
@@ -102,15 +105,16 @@ export default function ListingPage() {
         </div>
 
         <div className={styles.rightListing}>
-          <h1>{listing.asset.name}</h1>
-          <p>
-            Owned by <b>{listing.sellerAddress?.slice(0, 6)}</b>
-          </p>
 
-          <h2>
+        <h3>{listing.asset.description}</h3>
+
+          <h3>
             <b>{listing.buyoutCurrencyValuePerToken.displayValue}</b>{" "}
             {listing.buyoutCurrencyValuePerToken.symbol}
-          </h2>
+          </h3>
+          <p>
+            Owned by <b>{listing.sellerAddress?.slice(0, 8)}</b>
+          </p>
 
           <div
             style={{
@@ -121,11 +125,10 @@ export default function ListingPage() {
             }}
           >
             <button
-              style={{ borderStyle: "none" }}
               className={styles.mainButton}
               onClick={buyNft}
             >
-              Buy
+              Buy NFT
             </button>
             <p style={{ color: "grey" }}>|</p>
             <div
@@ -141,13 +144,14 @@ export default function ListingPage() {
                 name="bidAmount"
                 className={styles.textInput}
                 onChange={(e) => setBidAmount(e.target.value)}
-                placeholder="Amount"
+                placeholder={listing.buyoutCurrencyValuePerToken.displayValue}
                 style={{ marginTop: 0, marginLeft: 0, width: 128 }}
               />
               <button
                 className={styles.mainButton}
                 onClick={createBidOrOffer}
                 style={{
+                  outline: "none",
                   borderStyle: "none",
                   background: "transparent",
                   width: "fit-content",

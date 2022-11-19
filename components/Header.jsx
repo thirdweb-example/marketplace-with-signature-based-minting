@@ -13,31 +13,20 @@ export default function Header() {
       <div className={styles.left}>
         <Link href="/" passHref>
           <img
-            src={`/logo.png`}
-            alt="Thirdweb Logo"
+            src={`/mmlogonobg.svg`}
+            alt="Mintmatica Logo"
             className={styles.headerLogo}
           />
         </Link>
-        <Link href="/listings">
-          <a className={styles.headerItem}>Listings</a>
+        <Link legacyBehavior href="/listings" className={styles.headerItem}>
+          Listings
         </Link>
       </div>
 
       <div className={styles.right}>
-        {address ? (
-          <>
-            <a
-              className={styles.secondaryButton}
-              onClick={() => disconnectWallet()}
-            >
-              Disconnect
-            </a>
-            <p className={styles.verticalSpacer}>|</p>
-            <p>{address.slice(0, 6).concat("...").concat(address.slice(-4))}</p>
-          </>
-        ) : (
-          <ConnectWallet accentColor="#5204BF" colorMode="dark" />
-        )}
+          
+          <ConnectWallet accentColor="#041635" colorMode="dark" />
+        
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import {
 import { ChainId, NATIVE_TOKEN_ADDRESS } from "@thirdweb-dev/sdk";
 import { useRouter } from "next/router";
 import { useRef } from "react";
+import Button from '@mui/material/Button';
 import styles from "../styles/Theme.module.css";
 
 const Create = () => {
@@ -22,11 +23,11 @@ const Create = () => {
   const [creatingListing, setCreatingListing] = useState(false);
 
   const { contract: nftCollection } = useContract(
-    "0x5e0d08BF82f40b80DF1beb1874D04C1416BCc8B2",
+    "0xA46b048B089bb8ea1B5A371Be31dE934C288afb2",
     "nft-collection"
   );
   const { contract: marketplace } = useContract(
-    "0x4719c1737a69b50Ed303E01f7725Cc8aEd855Be1",
+    "0xBC1221FbF0BCb88E59bD48f2066aCa7731068509",
     "marketplace"
   );
 
@@ -59,12 +60,16 @@ const Create = () => {
 
       // Ensure user is on the correct network
       if (networkMismatch) {
-        switchNetwork?.(ChainId.Goerli);
+        switchNetwork?.(ChainId.Mainnet);
         return;
       }
 
+    
+
       // Upload image using storage SDK
       const img = await sdk.storage.upload(file);
+
+     
 
       // Signature Mint NFT, get info (fetch generate mint signature)
       const req = await fetch("/api/generate-mint-signature", {
@@ -79,9 +84,15 @@ const Create = () => {
 
       const signedPayload = (await req.json()).signedPayload;
 
+      console.log(signedPayload);
+
       const nft = await nftCollection?.signature.mint(signedPayload);
 
+      console.log(nft);
+
       const mintedTokenId = nft.id.toNumber();
+      console.log(mintedTokenId);
+
 
       // Store the result of either the direct listing creation or the auction listing creation
       let transactionResult = undefined;
@@ -90,7 +101,7 @@ const Create = () => {
       // For Direct Listings:
       if (listingType.value === "directListing") {
         transactionResult = await createDirectListing(
-          "0x5e0d08BF82f40b80DF1beb1874D04C1416BCc8B2",
+          "0xA46b048B089bb8ea1B5A371Be31dE934C288afb2",
           mintedTokenId,
           price.value
         );
@@ -99,15 +110,15 @@ const Create = () => {
       // For Auction Listings:
       if (listingType.value === "auctionListing") {
         transactionResult = await createAuctionListing(
-          "0x5e0d08BF82f40b80DF1beb1874D04C1416BCc8B2",
+          "0xA46b048B089bb8ea1B5A371Be31dE934C288afb2",
           mintedTokenId,
           price.value
         );
       }
 
-      // If the transaction succeeds, take the user back to the homepage to view their listing!
+      // If the transaction succeeds, take the user back to the homepage to view their listing!  MP Updated 11/6 with /listing/${listing.id}
       if (transactionResult) {
-        router.push(`/`);
+        router.push(`/listing/${listing.id}`);
       }
     } catch (error) {
       console.error(error);
@@ -143,7 +154,7 @@ const Create = () => {
 
   async function createDirectListing(contractAddress, tokenId, price) {
     try {
-      makeDirectListing(
+     makeDirectListing(
         {
           assetContractAddress: contractAddress, // Contract Address of the NFT
           buyoutPricePerToken: price, // Maximum price, the auction will end immediately if a user pays this price.
@@ -184,7 +195,7 @@ const Create = () => {
         {/* Form Section */}
         <div className={styles.collectionContainer}>
           <h1 className={styles.ourCollection}>
-            Upload your NFT to the marketplace:
+            Mint an NFT and add it to the marketplace:
           </h1>
 
           {/* Toggle between direct listing and auction listing */}
@@ -266,14 +277,16 @@ const Create = () => {
             style={{ minWidth: "320px" }}
           />
 
-          <button
+          <Button
+            variant="contained"
             type="submit"
+            size="large"
             className={styles.mainButton}
-            style={{ marginTop: 32, borderStyle: "none" }}
+            style={{ marginTop: 32, }}
             disabled={creatingListing}
           >
             {creatingListing ? "Loading..." : "Mint + List NFT"}
-          </button>
+          </Button>
         </div>
       </div>
     </form>
