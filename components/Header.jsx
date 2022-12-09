@@ -19,7 +19,7 @@ export default function Header() {
           />
         </Link>
         <Link href="/listings">
-          <a className={styles.headerItem}>Listings</a>
+          <p className={styles.headerItem}>Listings</p>
         </Link>
       </div>
 
