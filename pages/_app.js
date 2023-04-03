@@ -3,11 +3,11 @@ import Header from "../components/Header";
 import "../styles/globals.css";
 
 // This is the chainId your dApp will work on.
-const activeChainId = ChainId.Goerli;
+const activeChain = "goerli";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThirdwebProvider desiredChainId={activeChainId}>
+    <ThirdwebProvider activeChain={activeChain}>
       <Header />
       <Component {...pageProps} />
     </ThirdwebProvider>
