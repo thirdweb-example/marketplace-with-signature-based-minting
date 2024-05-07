@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   useContract,
-  useNetwork,
+  useSwitchChain,
   useNetworkMismatch,
   useAddress,
   useSDK,
@@ -12,11 +12,12 @@ import { ChainId, NATIVE_TOKEN_ADDRESS } from "@thirdweb-dev/sdk";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 import styles from "../styles/Theme.module.css";
+import { Goerli } from "@thirdweb-dev/chains";
 
 const Create = () => {
   const address = useAddress();
   const networkMismatch = useNetworkMismatch();
-  const [, switchNetwork] = useNetwork();
+  const switchNetwork = useSwitchChain();
   const sdk = useSDK();
 
   const [creatingListing, setCreatingListing] = useState(false);
@@ -59,7 +60,7 @@ const Create = () => {
 
       // Ensure user is on the correct network
       if (networkMismatch) {
-        switchNetwork?.(ChainId.Goerli);
+        switchNetwork(Goerli.chainId);
         return;
       }
 
@@ -107,7 +108,7 @@ const Create = () => {
 
       // If the transaction succeeds, take the user back to the homepage to view their listing!
       if (transactionResult) {
-        router.push(`/`);
+        router.push('/');
       }
     } catch (error) {
       console.error(error);
